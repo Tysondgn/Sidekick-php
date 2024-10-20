@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="description" content="A free QR Code Generator without nay signup or login make text and url's in to qr code.">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Code Generator</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #7a5fff, #3967fe, #ffffff);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .frosted-glass {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        input,
+        button {
+            border-radius: 10px;
+        }
+
+        .dark-mode {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        }
+
+        .light-mode {
+            /* background: linear-gradient(135deg, #ffffff, #d9e4f8); */
+            background: linear-gradient(135deg, #303030, #1b1b1b);
+        }
+
+        .toggle-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        
+        .home-route {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        #qr-code canvas {
+            margin: 0 auto;
+        }
+
+        .title {
+            font-size: 42px;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow: 0px 0px 3px #292929, 0px 0px 5px #171717;
+        }
+
+        .ctext {
+            font-size: 16px;
+            color: #ffffff;
+            text-shadow: 0px 0px 3px #292929, 0px 0px 5px #171717;
+        }
+
+        .branding {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow: 0px 0px 3px #292929, 0px 0px 5px #171717;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="frosted-glass text-center p-4">
+            <div class="home-route">
+                <a href="index.php" class="logo"><img src="images/logo.png" style="max-width: 120px; height: auto;" alt="" class="img-fluid"></a>
+            </div>
+            <div class="toggle-switch">
+                <button id="toggleMode" class="btn btn-secondary">Toggle Mode</button>
+            </div>
+            <h1 class="mb-4 mt-5 title">QR Code Generator</h1>
+            <form id="qr-generation-form">
+                <div class="w-100 d-flex align-item-center justify-content-center">
+                    <input type="text" id="qr-content" class="form-control mb-3 rounded-pill" style="max-width: 600px; min-width: 200px;"
+                        placeholder="Enter your QR content, text or URL" autocomplete="off" />
+                </div>
+                <div class="w-100 d-flex justify-content-center align-item-center">
+                    <div class="row mt-4 w-50">
+                        <div class="form-group col">
+                            <label for="qr-color" class="ctext">QR Code Color:</label>
+                            <input type="color" id="qr-color" name="qr-color" value="#000000" class="mb-3">
+                        </div>
+                        <div class="form-group col">
+                            <label for="qr-bg-color" class="ctext">QR Background Color:</label>
+                            <input type="color" id="qr-bg-color" name="qr-bg-color" value="#ffffff" class="mb-3">
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex align-item-center justify-content-center w-100">
+                    <div id="qr-code" class="m-2 shadow rounded" style="background-color: #ffffff; padding: 3px;"></div>
+                </div>
+                <input type="submit" value="Generate QR Code" class="btn btn-primary mb-4 shadow" />
+                <button type="button" id="downloadBtn" class="btn btn-success mb-4 ms-5 shadow">Download QR
+                    Code</button>
+            </form>
+            <p class="mt-3 branding"><small>Powered by Sidekick</small></p>
+        </div>
+    </div>
+
+    <script>
+        let qrContentInput = document.getElementById("qr-content");
+        let qrColorInput = document.getElementById("qr-color");
+        let qrBgColorInput = document.getElementById("qr-bg-color");
+        let qrGenerationForm = document.getElementById("qr-generation-form");
+        let downloadBtn = document.getElementById("downloadBtn");
+        let qrCode;
+
+        function generateQrCode(qrContent, qrColor, qrBgColor) {
+            return new QRCode(document.getElementById("qr-code"), {
+                text: qrContent,
+                width: 256,
+                height: 256,
+                colorDark: qrColor,
+                colorLight: qrBgColor,
+                correctLevel: QRCode.CorrectLevel.H,
+            });
+        }
+
+        function updateQrCode() {
+            let qrContent = qrContentInput.value;
+            let qrColor = qrColorInput.value;
+            let qrBgColor = qrBgColorInput.value;
+            document.getElementById('qr-code').innerHTML = ""; // Clear previous QR code
+            if (qrContent) {
+                qrCode = generateQrCode(qrContent, qrColor, qrBgColor);
+            }
+        }
+
+        qrGenerationForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            updateQrCode();
+        });
+
+        qrColorInput.addEventListener("change", updateQrCode);
+        qrBgColorInput.addEventListener("change", updateQrCode);
+        qrContentInput.addEventListener("input", updateQrCode);
+
+        downloadBtn.addEventListener("click", function () {
+            let canvas = document.querySelector("#qr-code canvas");
+            if (canvas) {
+                let link = document.createElement('a');
+                link.href = canvas.toDataURL("image/png");
+                link.download = 'qrcode.png';
+                link.click();
+            } else {
+                alert('Please generate a QR code first.');
+            }
+        });
+
+        document.getElementById("toggleMode").addEventListener("click", function () {
+            document.body.classList.toggle("dark-mode");
+            document.body.classList.toggle("light-mode");
+        });
+    </script>
+</body>
+
+</html>

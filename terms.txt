@@ -1,0 +1,47 @@
+Terms and Conditions of Service for Sidekick Software Company
+
+1. Introduction
+
+These terms and conditions (the "Agreement") govern the use of services provided by Sidekick Software Company ("Sidekick," "we," "our," or "us") in connection with app development, web development, ERP, CRM, and related services.
+
+2. Acceptance of Terms
+
+By engaging Sidekick's services, you agree to be bound by the terms and conditions outlined in this Agreement. If you do not agree with any part of these terms, please refrain from using our services.
+
+3. Services Provided
+
+Sidekick offers a range of services, including but not limited to app development, web development, ERP, CRM, and other software solutions.
+
+4. Client Responsibilities
+
+Clients are responsible for providing accurate and complete information necessary for the successful provision of services by Sidekick. Any delay or failure resulting from inaccurate or incomplete information is not the responsibility of Sidekick.
+
+5. Intellectual Property
+
+All intellectual property rights related to the services provided by Sidekick, including but not limited to software code, designs, and documentation, remain the property of Sidekick unless otherwise agreed upon in writing.
+
+6. Confidentiality
+
+Both parties agree to maintain the confidentiality of any proprietary or confidential information disclosed during the course of the engagement.
+
+7. Payment and Invoicing
+
+Payment terms, rates, and invoicing details will be outlined in a separate agreement or proposal. Failure to make timely payments may result in the suspension of services.
+
+8. Termination
+
+Either party may terminate the engagement with written notice if the other party breaches any material term of this Agreement. Upon termination, all outstanding fees become due.
+
+9. Limitation of Liability
+
+Sidekick is not liable for any indirect, incidental, special, or consequential damages arising out of or related to the services provided, even if advised of the possibility of such damages.
+
+10. Governing Law and Dispute Resolution
+
+This Agreement is governed by the laws of [Indian jurisdiction]. Any disputes arising out of or relating to this Agreement shall be resolved through arbitration in accordance with the rules of the Sidekick Company.
+
+11. Changes to Terms
+
+Sidekick reserves the right to modify these terms and conditions at any time. Clients will be notified of any changes, and continued use of our services constitutes acceptance of the modified terms.
+
+By engaging Sidekick's services, you acknowledge that you have read, understood, and agreed to these terms and conditions.
